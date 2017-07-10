@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+<meta charset="utf-8" />
+<title>css3毛玻璃效果(blur)</title>
+<meta name="author" content="" />
+<style>
+body {
+	background: #e2e2e2;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+.banner {
+	position: relative;
+}
+.posi {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+.blur { 
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+    
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);
+    
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+.container {
+	width: 100%;
+}
+.split {
+    position: relative;
+    height: 6rem;
+    font-size: 5.5rem;
+    width: 100%;
+}
+.split::before,
+.split::after {
+    content: attr(data-text);
+    text-transform: uppercase;
+    position: absolute;
+}
+.split::before {
+    clip: rect(auto, auto, 3rem, auto);
+    color: orange;
+}
+.split::after {
+    clip: rect(3rem, auto, 6rem, auto);
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    /*opacity: 0.4;*/
+    
+    text-shadow: 0 0 3px green;
+    color: rgba(0, 255, 0, 0.3);
+    filter: DXImageTransform.Microsoft.Blur(pixelradius=3);
+    zoom: 1;
+}
+</style>
+</head>
+<body>
+<div class="banner">
+	<img src="banner.jpg" class="posi" />
+	<img src="banner.jpg" class="blur" />
+</div>
+<div class="container">
+	<p class="split" data-text="techbrood"></p>
+</div>
+</body>
+</html>
+    
